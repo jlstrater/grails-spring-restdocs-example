@@ -8,7 +8,6 @@ ext {
 
 task cleanTempDirs(type: Delete) {
     delete fileTree(dir: 'src/docs/generated-snippets')
-    delete fileTree(dir: 'src/ratpack/public/docs')
 }
 
 test {
@@ -22,15 +21,7 @@ asciidoctor {
     inputs.dir snippetsDir
     sourceDir = file('src/docs')
     separateOutputDirs = false
-    attributes 'snippets': snippetsDir,
-            'source-highlighter': 'prettify',
-            'imagesdir': 'images',
-            'toc': 'left',
-            'icons': 'font',
-            'setanchors': 'true',
-            'idprefix': '',
-            'idseparator': '-',
-            'docinfo1': 'true'
+    attributes 'snippets': snippetsDir
 }
 
 build.dependsOn asciidoctor
