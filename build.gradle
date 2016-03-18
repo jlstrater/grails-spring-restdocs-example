@@ -10,6 +10,7 @@ buildscript {
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "org.grails.plugins:hibernate:4.3.10.5"
+        classpath 'org.ajoberstar:gradle-git:1.1.0'
     }
 }
 
@@ -76,3 +77,9 @@ task wrapper(type: Wrapper) {
 }
 
 apply from: 'gradle/restdocs.gradle'
+
+task publishDocs(type: GradleBuild) {
+    dependsOn asciidoctor
+    buildFile = file('publish.gradle')
+    tasks = ['publishGhPages']
+}
