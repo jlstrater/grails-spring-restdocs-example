@@ -3,3 +3,5 @@ classes/
 .gradle
 .idea
 *.iml
+
+src/docs/generated-snippets
